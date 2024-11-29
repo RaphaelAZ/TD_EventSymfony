@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link href="{{ asset('build/events/new-participant.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block title %}Évènements{% endblock %}
@@ -23,12 +24,6 @@
             {% if form.email.vars.errors|length > 0 %}
                 <div class="form-error">{{ form.email.vars.errors[0].message }}</div>
             {% endif %}
-        </div>
-
-        <div>
-            {{ form_label(form.event, 'Nom de l\'évènement') }}
-            {{ form_widget(form.event) }}
-            {{ form_errors(form.event) }}
         </div>
 
         <button type="submit">Ajouter le participant</button>

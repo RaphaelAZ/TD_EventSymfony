@@ -1,0 +1,24 @@
+.event-detail {
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    gap: 4rem;
+}
+
+#new-participant {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+    transition: background-color 0.3s ease;
+
+    .iconify {
+        color: green;
+    }
+}
+
+#new-participant:hover {
+    color: rgb(128, 214, 128);
+}

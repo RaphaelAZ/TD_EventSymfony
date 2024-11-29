@@ -20,6 +20,12 @@ class Participant
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $location_longitude = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $location_latitude = null;
+
     #[ORM\ManyToOne(inversedBy: 'participants')]
     private ?Event $event = null;
 
@@ -48,6 +54,30 @@ class Participant
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getLocationLongitude(): ?string
+    {
+        return $this->location_longitude;
+    }
+
+    public function setLocationLongitude(string $location_longitude): static
+    {
+        $this->location_longitude = $location_longitude;
+
+        return $this;
+    }
+
+    public function getLocationLatitude(): ?string
+    {
+        return $this->location_latitude;
+    }
+
+    public function setLocationLatitude(string $location_latitude): static
+    {
+        $this->location_latitude = $location_latitude;
 
         return $this;
     }

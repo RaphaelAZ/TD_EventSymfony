@@ -30,6 +30,8 @@ class EventFixtures extends Fixture
                 $participant = new Participant();
                 $participant->setName($faker->name);
                 $participant->setEmail($faker->email);
+                $participant->setLocationLatitude($faker->latitude);
+                $participant->setLocationLongitude($faker->longitude);
                 $participant->setEvent($event);
 
                 $manager->persist($participant);

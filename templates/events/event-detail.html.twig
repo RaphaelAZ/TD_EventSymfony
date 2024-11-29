@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('build/events/detail.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('build/events/event-detail.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block title %}Évènements{% endblock %}
@@ -35,9 +35,7 @@
             {% endfor %}
             </ul>
 
-            <a href="/events/{{event.id}}/participant/new">
-                <iconify-icon icon="ic:round-plus"></iconify-icon>Participant
-            </a>
+            <a href="/events/{{event.id}}/participant/new" id='new-participant'><span class="iconify" data-icon="ic:round-plus"></span>Participant</a>
         </section>
     </div>
     
