@@ -1,0 +1,6 @@
+.event-detail {
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    gap: 4rem;
+}

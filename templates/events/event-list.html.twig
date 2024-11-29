@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('build/events/events.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Évènements{% endblock %}
+
+{% block body %}
+    <h1>Liste des évènements à venir</h1>
+
+    {% if events is empty %}
+
+    <p>Aucun évènement à venir n'est disponible.</p>
+
+    {% else %}
+
+    <div id='event-list'>
+        {% for event in events %}
+            <div class="card">
+                <h2>{{ event.name }}</h2>
+                <p>Date de début: {{ event.date|date('d/m/Y') }}</p>
+                <a href="{{ path('events_detail', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+    
+{% endblock %}
