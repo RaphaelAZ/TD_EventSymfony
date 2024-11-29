@@ -19,15 +19,11 @@ class EventType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrez le nom',
                     'class' => 'form-control'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Le nom ne peut pas être vide.',
-                    ])
                 ]
             ])
             ->add('date', DateType::class, [
                 'attr' => [
+                    
                     'placeholder' => 'Entrez la date'
                 ]
             ])
@@ -35,22 +31,12 @@ class EventType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrez la longitude',
                     'class' => 'form-control'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'La longitude ne peut pas être vide.',
-                    ])
                 ]
             ])
             ->add('location_latitude', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Entrez la latitude',
                     'class' => 'form-control'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'La latitude ne peut pas être vide.',
-                    ])
                 ]
             ])
         ;

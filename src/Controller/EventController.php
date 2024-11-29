@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Service\DistanceCalculator;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,10 +59,8 @@ class EventController extends AbstractController
         $formEvent = $this->createForm(EventType::class, $event);
         $formEvent->handleRequest($request);
 
-        dd($formEvent);
-
         if($formEvent->isSubmitted() && $formEvent->isValid()) {
-            $entityManager->persist($formEvent);
+            $entityManager->persist($event);
             $entityManager->flush();
 
             $session->set('event', $event);

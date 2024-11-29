@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ParticipantController extends AbstractController
 {
-    #[Route('/events/{id}/participant/new', name: 'add_participant')]
+    #[Route('/events/{id}/participant/new', name: 'add_participant')] // Ajouter un participant à un event
     public function index($id, EventRepository $eventRepository, Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
     {
         $event = $eventRepository->findOneBy(['id' => $id]);
@@ -37,11 +37,12 @@ class ParticipantController extends AbstractController
         }
 
         return $this->render('events/new-participant.html.twig', [
+            'id' => $event->getId(),
             'form' => $formParticipant
         ]);
     }
 
-    #[Route('/events/{id}/participant/success', name: 'add_participant_success')]
+    #[Route('/events/{id}/participant/success', name: 'add_participant_success')] // Page de confirmation d'ajout
     public function success(SessionInterface $session): Response
     {
         $participant = $session->get('participant');

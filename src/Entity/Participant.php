@@ -15,15 +15,20 @@ class Participant
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le nom ne peut pas être vide.")]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "L'e-mail ne peut pas être vide.")]
+    #[Assert\Email(message: "L\'adresse email n\'est pas un email valide.")]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10)]
+    #[Assert\NotBlank(message: "La longitude ne peut pas être vide.")]
     private ?string $location_longitude = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10)]
+    #[Assert\NotBlank(message: "La latitude ne peut pas être vide.")]
     private ?string $location_latitude = null;
 
     #[ORM\ManyToOne(inversedBy: 'participants')]

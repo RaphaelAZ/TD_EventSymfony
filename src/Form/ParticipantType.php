@@ -19,26 +19,13 @@ class ParticipantType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrez le nom',
                     'class' => 'form-control'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'Le nom ne peut pas être vide.',
-                    ])
                 ]
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
                     'placeholder' => 'Entrez l\'adresse email',
                     'class' => 'form-control'
-                ],
-                'constraints' => [
-                    new Assert\NotBlank([
-                        'message' => 'L\'adresse email ne peut pas être vide.',
-                    ]),
-                    new Assert\Email([
-                        'message' => 'L\'adresse email n\'est pas un email valide.',
-                    ]),
-                ],
+                ]
             ])
         ;
     }

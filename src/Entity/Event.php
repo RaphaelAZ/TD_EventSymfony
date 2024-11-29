@@ -22,14 +22,16 @@ class Event
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotBlank(message: "La date ne peut pas être vide.")]
     #[Assert\GreaterThanOrEqual("today", message: "La date doit être supérieure ou égale à aujourd'hui.")]
-    #[Assert\Date(message: "La format de date n\'est pas correct.")]
     private ?\DateTimeImmutable $date = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10)]
+    #[Assert\NotBlank(message: "La longitude ne peut pas être vide.")]
     private ?string $location_longitude = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10)]
+    #[Assert\NotBlank(message: "La latitude ne peut pas être vide.")]
     private ?string $location_latitude = null;
 
     /**

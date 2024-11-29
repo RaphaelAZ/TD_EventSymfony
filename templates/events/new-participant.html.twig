@@ -9,6 +9,7 @@
 
 {% block body %}
     <h1>Ajouter un participant à un évènement</h1>
+    <a href="{{ path('events_detail', {'id': id}) }}">Annuler</a>
 
     {{ form_start(form)}}
 

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}Réserver{% endblock %}
+
+{% block body %}
+    <h1>Évènement ajouté avec succès !</h1>
+    <p class="success">L'évènement {{ event.name }} a été ajouté avec succès.</p>
+    <hr>
+
+    <h3>Récapitulatif évènement:</h3>
+    <p>Nom : <span class="bold-info">{{ event.name }}</span></p>
+    <p>Localisation : <span class="bold-info">{{ event.locationLatitude }}\{{ event.locationLongitude }}</span></p>
+    <p>Date : <span class="bold-info">{{ event.date|date('d/m/Y') }}</span></p>
+
+    <a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}
