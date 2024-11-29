@@ -47,7 +47,7 @@ class ParticipantController extends AbstractController
         $participant = $session->get('participant');
         $event = $session->get('event');
         if ($participant && $event) {
-            return $this->render('events/new-participant-success.html.twig', [
+            return $this->render('events/success/new-participant-success.html.twig', [
                 'participant' => $participant,
                 'event' => $event
             ]);

@@ -23,6 +23,7 @@ class Event
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\GreaterThanOrEqual("today", message: "La date doit être supérieure ou égale à aujourd'hui.")]
+    #[Assert\Date(message: "La format de date n\'est pas correct.")]
     private ?\DateTimeImmutable $date = null;
 
     #[ORM\Column(length: 255)]

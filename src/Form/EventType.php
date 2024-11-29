@@ -2,15 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\Participant;
+use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ParticipantType extends AbstractType
+class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -26,19 +26,32 @@ class ParticipantType extends AbstractType
                     ])
                 ]
             ])
-            ->add('email', EmailType::class, [
+            ->add('date', DateType::class, [
                 'attr' => [
-                    'placeholder' => 'Entrez l\'adresse email',
+                    'placeholder' => 'Entrez la date'
+                ]
+            ])
+            ->add('location_longitude', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Entrez la longitude',
                     'class' => 'form-control'
                 ],
                 'constraints' => [
                     new Assert\NotBlank([
-                        'message' => 'L\'adresse email ne peut pas être vide.',
-                    ]),
-                    new Assert\Email([
-                        'message' => 'L\'adresse email n\'est pas un email valide.',
-                    ]),
+                        'message' => 'La longitude ne peut pas être vide.',
+                    ])
+                ]
+            ])
+            ->add('location_latitude', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Entrez la latitude',
+                    'class' => 'form-control'
                 ],
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'La latitude ne peut pas être vide.',
+                    ])
+                ]
             ])
         ;
     }
@@ -46,7 +59,7 @@ class ParticipantType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Participant::class,
+            'data_class' => Event::class,
         ]);
     }
 }

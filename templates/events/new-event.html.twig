@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('build/events/new-event.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Évènement{% endblock %}
+
+{% block body %}
+    <h1>Création d'un nouvel évènement</h1>
+
+    {{ form_start(form)}}
+
+        <div>
+            {{ form_label(form.name, 'Nom de l\évènement') }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div>
+            {{ form_label(form.date, 'Date de l\'évènement') }}
+            {{ form_widget(form.date) }}
+            {{ form_errors(form.date) }}
+        </div>
+
+        <div>
+            {{ form_label(form.location_longitude, 'Longitude de l\'évènement') }}
+            {{ form_widget(form.location_longitude) }}
+            {{ form_errors(form.location_longitude) }}
+        </div>
+
+        <div>
+            {{ form_label(form.location_latitude, 'Latitude de l\'évènement') }}
+            {{ form_widget(form.location_latitude) }}
+            {{ form_errors(form.location_latitude) }}
+        </div>
+
+        <button type="submit">Créer l'évènement</button>
+
+    {{ form_end(form) }}
+{% endblock %}
