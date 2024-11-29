@@ -1,0 +1,29 @@
+
+# EventPlanifier
+
+## Démarrage
+Une fois le projet cloné, préparez l'installation en suivant les prérequis
+
+### Prérequis
+  - Une base de données nommée ``symfony_event_planifier``
+
+### Commandes
+Une fois les prérequis installés, vous pouvez coller les commandes dans le terminal de votre choix et dans le bon répertoire:
+
+#### Répertoire backend :
+```shell
+composer run setup
+
+"Installing dependencies...";
+"Loading migration...";
+"Loading fixtures...";
+```
+
+```shell
+symfony serve
+
+"Application starting...";
+```
+
+### Lancement
+Après avoir installé les dépendances et démarré le projet rendez-vous sur l'URL localhost:8000 !
