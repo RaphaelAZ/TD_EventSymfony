@@ -41,7 +41,7 @@ class EventController extends AbstractController
         ]);
     }
 
-    #[Route('/events/{id}/distance?lat={lat}&lon={lon}', name: 'distance_calculator')] // Action qui donne la distance entre 2 positions
+    #[Route('/events/{id}/distance?lat={lat}&lon={lon}', name: 'distance_calculator', requirements: ['id' => '\d+'])] // Action qui donne la distance entre 2 positions
     public function calculateDistance($id, $lat, $lon, EventRepository $eventRepository): Response
     {
         $event = $eventRepository->findOneBy(['id' => $id]);

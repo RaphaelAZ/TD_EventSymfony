@@ -27,6 +27,18 @@ class ParticipantType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+            ->add('location_longitude', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Entrez la longitude',
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('location_latitude', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Entrez la latitude',
+                    'class' => 'form-control'
+                ]
+            ])
         ;
     }
 

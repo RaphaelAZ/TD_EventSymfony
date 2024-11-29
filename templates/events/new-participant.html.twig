@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('build/events/new-participant.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block title %}Évènements{% endblock %}
@@ -33,6 +32,26 @@
                 </div>
                 {% if form.email.vars.errors|length > 0 %}
                     <p class="help is-danger">{{ form.email.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                {{ form_label(form.location_longitude, 'Longitude de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.location_longitude, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.location_longitude.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.location_longitude.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                {{ form_label(form.location_latitude, 'Latitude de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.location_latitude, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.location_latitude.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.location_latitude.vars.errors[0].message }}</p>
                 {% endif %}
             </div>
 

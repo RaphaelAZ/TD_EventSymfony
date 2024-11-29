@@ -7,19 +7,27 @@
 {% block title %}Réserver{% endblock %}
 
 {% block body %}
-    <h1>Participant ajouté avec succès !</h1>
-    <p class="success">Le participant {{ participant.name }} a été ajouté à l'évènement {{ event.name|capitalize }}.</p>
-    <hr>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-3 has-text-primary">Participant ajouté avec succès !</h1>
+            <p class="notification is-success">
+                Le participant <strong>{{ participant.name }}</strong> a été ajouté à l'évènement <strong>{{ event.name|capitalize }}</strong>.
+            </p>
+            <hr>
 
-    <h3>Récapitulatif participant:</h3>
-    <p>Nom : <span class="bold-info">{{ participant.name }}</span></p>
-    <p>E-mail : <span class="bold-info">{{ participant.email }}</span></p>
-    <hr>
+            <h3 class="title is-4">Récapitulatif participant :</h3>
+            <p><strong>Nom :</strong> {{ participant.name }}</p>
+            <p><strong>E-mail :</strong> {{ participant.email }}</p>
+            <hr>
 
-    <h3>Récapitulatif évènement:</h3>
-    <p>Nom : <span class="bold-info">{{ event.name }}</span></p>
-    <p>Localisation : <span class="bold-info">{{ event.locationLatitude }}\{{ event.locationLongitude }}</span></p>
-    <p>Date : <span class="bold-info">{{ event.date|date('d/m/Y') }}</span></p>
+            <h3 class="title is-4">Récapitulatif évènement :</h3>
+            <p><strong>Nom :</strong> {{ event.name }}</p>
+            <p><strong>Localisation :</strong> {{ event.locationLatitude }} / {{ event.locationLongitude }}</p>
+            <p><strong>Date :</strong> {{ event.date|date('d/m/Y') }}</p>
 
-    <a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+            <div class="mt-4">
+                <a href="{{ path('app_home') }}" class="button is-primary">Retour à l'accueil</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}
