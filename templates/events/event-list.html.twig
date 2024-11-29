@@ -8,29 +8,48 @@
 {% block title %}Évènements{% endblock %}
 
 {% block body %}
-    <h1>Liste des évènements à venir</h1>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Liste des évènements à venir</h1>
 
-    {% if events is empty %}
-
-    <p>Aucun évènement à venir n'est disponible.</p>
-
-    {% else %}
-
-    <div id='event-list'>
-        {% for event in events %}
-            <div>
-                <h2>{{ event.name }}</h2>
-                <p>Date de début: {{ event.date|date('d/m/Y') }}</p>
-                <a href="{{ path('events_detail', {'id': event.id}) }}" class="btn btn-primary">Voir plus</a>
+        {% if events is empty %}
+            <p class="notification is-warning">Aucun évènement à venir n'est disponible.</p>
+        {% else %}
+            <div id="event-list" class="columns is-multiline">
+                {% for event in events %}
+                    <div class="column is-one-third">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">{{ event.name|capitalize }}</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p><strong>Date de début:</strong> {{ event.date|date('d/m/Y') }}</p>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a href="{{ path('events_detail', {'id': event.id}) }}" class="card-footer-item button is-link">Voir plus</a>
+                            </footer>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="column is-one-third">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">Nouvel évènement</p>
+                        </header>
+                        <div class="card-content has-text-centered">
+                            <span class="icon is-large">
+                                <i class="iconify" data-icon="ic:round-plus" style="font-size: 48px;"></i>
+                            </span>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{{ path('add_event') }}" class="card-footer-item button is-primary">Créer</a>
+                        </footer>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
-        <div>
-            <h2>Nouvel évènement</h2>
-            <span class="iconify" data-icon="ic:round-plus"></span>
-            <a href="{{ path('add_event') }}" class="btn btn-primary">Créer</a>
-        </div>
+        {% endif %}
     </div>
-
-    {% endif %}
-    
+</section>
 {% endblock %}

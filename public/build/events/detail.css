@@ -1,7 +1,0 @@
-#event-detail {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    gap: 12rem;
-}

@@ -8,36 +8,62 @@
 {% block title %}Évènement{% endblock %}
 
 {% block body %}
-    <h1>Création d'un nouvel évènement</h1>
-    <a href="{{ path('events') }}">Annuler</a>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Création d'un nouvel évènement</h1>
+        <a href="{{ path('events') }}" class="button is-light">Annuler</a>
 
-    {{ form_start(form)}}
+        <div class="box">
+            {{ form_start(form, {'attr': {'class': 'form'}}) }}
 
-        <div>
-            {{ form_label(form.name, 'Nom de l\évènement') }}
-            {{ form_widget(form.name) }}
-            {{ form_errors(form.name) }}
+            <div class="field">
+                {{ form_label(form.name, 'Nom de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.name, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.name.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.name.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                {{ form_label(form.date, 'Date de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.date, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.date.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.date.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                {{ form_label(form.location_longitude, 'Longitude de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.location_longitude, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.location_longitude.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.location_longitude.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                {{ form_label(form.location_latitude, 'Latitude de l\'évènement', {'label_attr': {'class': 'label'}}) }}
+                <div class="control">
+                    {{ form_widget(form.location_latitude, {'attr': {'class': 'input'}}) }}
+                </div>
+                {% if form.location_latitude.vars.errors|length > 0 %}
+                    <p class="help is-danger">{{ form.location_latitude.vars.errors[0].message }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary">Créer l'évènement</button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
         </div>
-
-        <div>
-            {{ form_label(form.date, 'Date de l\'évènement') }}
-            {{ form_widget(form.date) }}
-            {{ form_errors(form.date) }}
-        </div>
-
-        <div>
-            {{ form_label(form.location_longitude, 'Longitude de l\'évènement') }}
-            {{ form_widget(form.location_longitude) }}
-            {{ form_errors(form.location_longitude) }}
-        </div>
-
-        <div>
-            {{ form_label(form.location_latitude, 'Latitude de l\'évènement') }}
-            {{ form_widget(form.location_latitude) }}
-            {{ form_errors(form.location_latitude) }}
-        </div>
-
-        <button type="submit">Créer l'évènement</button>
-
-    {{ form_end(form) }}
+    </div>
+</section>
 {% endblock %}

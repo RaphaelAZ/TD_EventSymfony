@@ -10,39 +10,52 @@
 {% block title %}Évènements{% endblock %}
 
 {% block body %}
+<section class="section">
+    <div class="container">
+        {% if event %}
+            <h1 class="title is-2">Détail de l'évènement {{ event.name|capitalize }}</h1>
 
-    {% if event %}
-        <h1 class="title is-2">Détail de l'évènement {{ event.name|capitalize }}</h1>
+            <div id="event-detail" class="columns">
+                <section id="event-detail-infos" class="card column is-half">
+                    <div class="card-content">
+                        <p><strong>Date de début :</strong> {{ event.date|date('d/m/Y') }}</p>
+                        <p><strong>Localisation :</strong> {{ event.locationLongitude }} / {{ event.locationLatitude }}</p>
 
-        <div id='event-detail'>
-            <section id='event-detail-infos' class="card">
-                <p><strong>Date de début : </strong> {{ event.date|date('d/m/Y') }}</p>
-                <p><strong>Localisation : </strong> {{ event.locationLongitude }} / {{ event.locationLatitude }}</p>
+                        <div class="mt-4">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991123456789!2d{{ event.locationLongitude }}!3d{{ event.locationLatitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671d1e9a82b7b%3A0x4fd4ee234f60d0e5!2sEiffel+Tower!5e0!3m2!1sen!2sfr!4v1634176894342!5m2!1sen!2sfr" 
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>        
+                        </div>
+                    </div>
+                </section>
 
-                <div>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991123456789!2d{{ event.locationLongitude }}!3d{{ event.locationLatitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671d1e9a82b7b%3A0x4fd4ee234f60d0e5!2sEiffel+Tower!5e0!3m2!1sen!2sfr!4v1634176894342!5m2!1sen!2sfr" 
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>        
-                </div>
-            </section>
+                <section id="event-detail-participants" class="card column is-half">
+                    <div class="card-content">
+                        <h3 class="title is-4">Liste des participants</h3>
 
-            <section id='event-detail-participants' class="card">
-                <h3 class="title is-4">Liste des participants</h3>
+                        {% if participants is not empty %}
+                            <ul>
+                            {% for participant in participants %}
+                                <li>{{ participant.name }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="notification is-warning">Aucun participant enregistré pour cet évènement.</p>
+                        {% endif %}
 
-                <ul>
-                {% for participant in participants %}
-                    <li>{{ participant.name }}</li>
-                {% endfor %}
-                </ul>
-
-                <a href="/events/{{event.id}}/participant/new" id='new-participant' class="button is-primary">
-                    <span class="iconify" data-icon="ic:round-plus" style="font-size: 20px;"></span> Je veux participer
-                </a>
-            </section>
-        </div>
-    {% else %}
-        <h3 class="has-text-danger">Aucun évènement disponible référencé à cet attribut</h3>
-    {% endif %}
-
+                        <a href="/events/{{ event.id }}/participant/new" id="new-participant" class="button is-primary mt-4">
+                            <span class="icon is-small">
+                                <i class="iconify" data-icon="ic:round-plus"></i>
+                            </span>
+                            <span>Je veux participer</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        {% else %}
+            <h3 class="has-text-danger">Aucun évènement disponible référencé à cet attribut</h3>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

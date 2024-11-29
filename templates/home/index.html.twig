@@ -3,5 +3,51 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur votre site de planification d'évènements en ligne.</h1>
+<section class="hero is-primary is-medium">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                Bienvenue sur votre site de planification d'évènements en ligne
+            </h1>
+            <h2 class="subtitle">
+                Organisez vos évènements facilement et efficacement.
+            </h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="title is-4 has-text-centered">Fonctionnalités principales</h2>
+        <div class="columns is-multiline">
+            <div class="column is-one-third">
+                <div class="box has-text-centered">
+                    <span class="icon is-large">
+                        <i class="fas fa-calendar-alt fa-2x"></i>
+                    </span>
+                    <h3 class="title is-5">Planification</h3>
+                    <p>Créez facilement vos évènements en quelques clics.</p>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box has-text-centered">
+                    <span class="icon is-large">
+                        <i class="fas fa-users fa-2x"></i>
+                    </span>
+                    <h3 class="title is-5">Participants</h3>
+                    <p>Invitez et suivez vos participants en toute simplicité.</p>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box has-text-centered">
+                    <span class="icon is-large">
+                        <i class="fas fa-map-marker-alt fa-2x"></i>
+                    </span>
+                    <h3 class="title is-5">Localisation</h3>
+                    <p>Ajoutez des lieux précis pour vos évènements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
