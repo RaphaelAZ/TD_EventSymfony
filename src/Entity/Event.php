@@ -28,10 +28,12 @@ class Event
 
     #[ORM\Column(length: 10)]
     #[Assert\NotBlank(message: "La longitude ne peut pas être vide.")]
+    #[Assert\Range(min: -180, max: 180, notInRangeMessage: "La longitude doit être comprise entre {{ min }}° et {{ max }}°")]
     private ?string $location_longitude = null;
 
     #[ORM\Column(length: 10)]
     #[Assert\NotBlank(message: "La latitude ne peut pas être vide.")]
+    #[Assert\Range(min: -90, max: 90, notInRangeMessage: "La latitude doit être comprise entre {{ min }}° et {{ max }}°")]
     private ?string $location_latitude = null;
 
     /**
